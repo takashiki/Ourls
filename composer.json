@@ -1,0 +1,13 @@
+{
+    "require": {
+        "php": ">=5.4.0",
+        "hashids/hashids": "1.0.5",
+        "mikecao/flight": "^1.2",
+        "catfan/medoo": "^0.9.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    }
+}
