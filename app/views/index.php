@@ -45,7 +45,7 @@
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
 
         <form class="am-form">
-            <input type="url" name="" id="url" value="" placeholder="请在此填写你要转换的长网址或短址">
+            <input type="url" name="" id="url" value="" placeholder="请在此填写你要转换的长网址或短址，以(http|https|ftp)://开头">
             <br>
             <div class="am-cf">
                 <input type="button" id="shorten" value="转换短址" class="am-btn am-btn-primary am-btn-sm am-fl">
