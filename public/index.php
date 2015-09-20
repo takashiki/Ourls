@@ -7,6 +7,7 @@ require __DIR__ . '/../app/routes.php';
 
 $config = require __DIR__ . '/../app/config.php';
 
+Flight::set('flight.log_errors', $config['debug']);
 Flight::set('flight.base_url', $config['base_url']);
 Flight::set('flight.views.path', __DIR__ . '/../app/views');
 Flight::set('alphabet', $config['hash']['alphabet']);

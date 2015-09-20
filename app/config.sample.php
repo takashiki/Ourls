@@ -1,5 +1,6 @@
 <?php
 return [
+    'debug' => true,
     'base_url' => 'YourSiteUrl',
     'hash' => [
         'salt' => 'SomeRandomKey',

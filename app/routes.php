@@ -83,3 +83,16 @@ Flight::map('notFound', function($message) {
         )
         ->send();
 });
+
+Flight::map('error', function(Exception $ex) {
+    $message = Flight::get('flight.log_errors') ? $ex->getTraceAsString() : '出错了';
+    Flight::response()->status(500)
+        ->header('content-type', 'text/html; charset=utf-8')
+        ->write(
+            '<h1>500 服务器内部错误</h1>'.
+            "<h3>{$message}</h3>".
+            '<p><a href="' . Flight::get('flight.base_url') . '">回到首页</a></p>'.
+            str_repeat(' ', 512)
+        )
+        ->send();
+});
