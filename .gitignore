@@ -2,3 +2,4 @@
 /app/config.php
 vendor
 /composer.lock
+/config.yaml

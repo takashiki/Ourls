@@ -5,10 +5,12 @@ CREATE TABLE `urls` (
     `create_at` INT (11) NOT NULL,
     `creator` INT (11) NOT NULL DEFAULT '0',
     `count` INT (11) NOT NULL DEFAULT '0',
+    `status` TINYINT(1) NOT NULL DEFAULT '1',
     PRIMARY KEY (`id`),
     INDEX (`sha1`),
     INDEX (`create_at`),
     INDEX (`creator`),
-    INDEX (`count`)
+    INDEX (`count`),
+    INDEX (`status`)
 ) ENGINE = INNODB CHARACTER
 SET utf8 COLLATE utf8_unicode_ci;
