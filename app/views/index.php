@@ -66,6 +66,7 @@
 <script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 <script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.min.js"></script>
+<script src="//cdn.bootcss.com/validator/4.0.5/validator.min.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

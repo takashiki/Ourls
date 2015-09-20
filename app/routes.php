@@ -6,22 +6,26 @@ Flight::route('/', function(){
 Flight::route('/shorten', function() {
     $url = urldecode(Flight::request()->query['url']);
     if ($url) {
-        $sha1 = sha1($url);
-        $store = Flight::get('db_read')->select('urls', ['id'], [
-            'sha1' => $sha1,
-        ]);
-        if (!$store) {
-            $id = Flight::get('db')->insert('urls', [
-                'sha1' => $sha1,
-                'url' => $url,
-                'create_at' => time(),
-                'creator' => ip2long(Flight::request()->ip),
-            ]);
+        if (strpos($url, Flight::get('flight.base_url')) !== false) {
+            Flight::json(['status' => 0, 'msg' => '该地址无法被缩短']);
         } else {
-            $id = $store[0]['id'];
+            $sha1 = sha1($url);
+            $store = Flight::get('db_read')->select('urls', ['id'], [
+                'sha1' => $sha1,
+            ]);
+            if (!$store) {
+                $id = Flight::get('db')->insert('urls', [
+                    'sha1' => $sha1,
+                    'url' => $url,
+                    'create_at' => time(),
+                    'creator' => ip2long(Flight::request()->ip),
+                ]);
+            } else {
+                $id = $store[0]['id'];
+            }
+            $s_url = Flight::get('flight.base_url') . Flight::get('hash')->encode($id);
+            Flight::json(['status' => 1, 's_url' => $s_url]);
         }
-        $s_url = Flight::get('flight.base_url') . Flight::get('hash')->encode($id);
-        Flight::json(['status' => 1, 's_url' => $s_url]);
     }
 });
 
