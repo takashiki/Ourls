@@ -14,9 +14,12 @@ Ourls会根据sha1值来判断原url在数据库中是否已存在，若不存�
 将app目录下config.sample.php重命名为config.php并按自己实际情况修改相关配置项。
 
 > git clone
-import urls.sql to your database
-rename app/config.sample.php to app/config.php 
-modify the config file according to your situation
+
+> import urls.sql to your database
+
+> rename app/config.sample.php to app/config.php 
+
+> modify the config file according to your situation
 
 ### License
 

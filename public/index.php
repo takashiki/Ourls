@@ -12,7 +12,7 @@ Flight::set('flight.views.path', __DIR__ . '/../app/views');
 Flight::set('alphabet', $config['hash']['alphabet']);
 
 Flight::instance('hash', '\app\components\Hash', [$config['hash']]);
-
 Flight::instance('db', 'medoo', [$config['db']]);
+Flight::instance('db_read', 'medoo', [$config['db_read']]);
 
 Flight::start();

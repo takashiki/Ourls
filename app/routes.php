@@ -7,7 +7,7 @@ Flight::route('/shorten', function() {
     $url = urldecode(Flight::request()->query['url']);
     if ($url) {
         $sha1 = sha1($url);
-        $store = Flight::get('db')->select('urls', ['id'], [
+        $store = Flight::get('db_read')->select('urls', ['id'], [
             'sha1' => $sha1,
         ]);
         if (!$store) {
@@ -15,6 +15,7 @@ Flight::route('/shorten', function() {
                 'sha1' => $sha1,
                 'url' => $url,
                 'create_at' => time(),
+                'creator' => ip2long(Flight::request()->ip),
             ]);
         } else {
             $id = $store[0]['id'];
@@ -35,7 +36,7 @@ Flight::route('/expand', function() {
             if (!$id) {
                 Flight::json(['status' => 0, 'msg' => '短址无法解析']);
             } else {
-                $store = Flight::get('db')->select('urls', ['url'], [
+                $store = Flight::get('db_read')->select('urls', ['url'], [
                     'id' => $id,
                 ]);
                 if (!$store) {
@@ -53,7 +54,7 @@ Flight::route('/@hash', function($hash) {
     if (! $id) {
         Flight::notFound('短址无法解析');
     } else {
-        $store = Flight::get('db')->select('urls', ['url'], [
+        $store = Flight::get('db_read')->select('urls', ['url'], [
             'id' => $id,
         ]);
         if (! $store) {
