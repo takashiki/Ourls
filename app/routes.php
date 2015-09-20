@@ -5,40 +5,44 @@ Flight::route('/', function(){
 
 Flight::route('/shorten', function() {
     $url = urldecode(Flight::request()->query['url']);
-    $sha1 = sha1($url);
-    $store = Flight::get('db')->select('urls', ['id'], [
-        'sha1' => $sha1,
-    ]);
-    if (! $store) {
-        $id = Flight::get('db')->insert('urls', [
+    if ($url) {
+        $sha1 = sha1($url);
+        $store = Flight::get('db')->select('urls', ['id'], [
             'sha1' => $sha1,
-            'url' => $url,
-            'create_at' => time(),
         ]);
-    } else {
-        $id = $store[0]['id'];
+        if (!$store) {
+            $id = Flight::get('db')->insert('urls', [
+                'sha1' => $sha1,
+                'url' => $url,
+                'create_at' => time(),
+            ]);
+        } else {
+            $id = $store[0]['id'];
+        }
+        $s_url = Flight::get('flight.base_url') . Flight::get('hash')->encode($id);
+        Flight::json(['status' => 1, 's_url' => $s_url]);
     }
-    $s_url = Flight::get('flight.base_url') . Flight::get('hash')->encode($id);
-    Flight::json(['status' => 1, 's_url' => $s_url]);
 });
 
 Flight::route('/expand', function() {
     $s_url = Flight::request()->query['s_url'];
-    $hash = trim($s_url, Flight::get('flight.base_url'));
-    if (! preg_match('/^[' . Flight::get('alphabet') . ']+$/', $hash)) {
-        Flight::json(['status' => 0, 'msg' => '短址不正确']);
-    } else {
-        $id = Flight::get('hash')->decode($hash);
-        if (! $id) {
-            Flight::json(['status' => 0, 'msg' => '短址无法解析']);
+    if ($s_url) {
+        $hash = str_replace(Flight::get('flight.base_url'), '', $s_url);
+        if (!preg_match('/^[' . Flight::get('alphabet') . ']+$/', $hash)) {
+            Flight::json(['status' => 0, 'msg' => '短址不正确']);
         } else {
-            $store = Flight::get('db')->select('urls', ['url'], [
-                'id' => $id,
-            ]);
-            if (! $store) {
-                Flight::json(['status' => 0, 'msg' => '地址不存在']);
+            $id = Flight::get('hash')->decode($hash);
+            if (!$id) {
+                Flight::json(['status' => 0, 'msg' => '短址无法解析']);
             } else {
-                Flight::json(['status' => 1, 'url' => $store[0]['url']]);
+                $store = Flight::get('db')->select('urls', ['url'], [
+                    'id' => $id,
+                ]);
+                if (!$store) {
+                    Flight::json(['status' => 0, 'msg' => '地址不存在']);
+                } else {
+                    Flight::json(['status' => 1, 'url' => $store[0]['url']]);
+                }
             }
         }
     }

@@ -1,5 +1,5 @@
 $('#shorten').click(function() {
-    var url = $('#url').val();
+    var url = encodeURIComponent($('#url').val());
     $.getJSON(
         'shorten?url=' + url,
         function(data) {
