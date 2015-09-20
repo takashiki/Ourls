@@ -1,4 +1,16 @@
 {
+    "name": "takashiki/ourls",
+    "description": "A url shorten service system base on hash id",
+    "keywords": ["url shorten", "hashids"],
+    "homepage": "https://github.com/takashiki/ourls",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "takashiki",
+            "email": "857995137@qq.com",
+            "homepage": "http://blog.skyx.in/"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "hashids/hashids": "1.0.5",
