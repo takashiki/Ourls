@@ -7,7 +7,8 @@ require __DIR__ . '/../app/routes.php';
 
 $config = require __DIR__ . '/../app/config.php';
 
-Flight::set('base_url', $config['base_url']);
+Flight::set('flight.base_url', $config['base_url']);
+Flight::set('flight.views.path', __DIR__ . '/../app/views');
 Flight::set('alphabet', $config['hash']['alphabet']);
 
 Flight::instance('hash', '\app\components\Hash', [$config['hash']]);

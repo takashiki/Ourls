@@ -6,4 +6,4 @@ Ourls是一个基于发号和hashid的短网址服务，灵感来源于知乎上
 
 ## 安装/Install
 
-下载源码后运行`composer install`，将urls.sql导入数据库中，将app目录下config.sample.php重命名为config.php并按自己实际情况修改相关配置项。
+下载源码后运行`composer install`安装依赖包，然后将urls.sql导入数据库中，将app目录下config.sample.php重命名为config.php并按自己实际情况修改相关配置项。

@@ -1,6 +1,6 @@
 <?php
 Flight::route('/', function(){
-    echo 'hello world!';
+    Flight::render('index.php');
 });
 
 Flight::route('/shorten', function() {
@@ -18,13 +18,13 @@ Flight::route('/shorten', function() {
     } else {
         $id = $store[0]['id'];
     }
-    $s_url = Flight::get('base_url') . Flight::get('hash')->encode($id);
+    $s_url = Flight::get('flight.base_url') . Flight::get('hash')->encode($id);
     Flight::json(['status' => 1, 's_url' => $s_url]);
 });
 
 Flight::route('/expand', function() {
     $s_url = Flight::request()->query['s_url'];
-    $hash = trim($s_url, Flight::get('base_url'));
+    $hash = trim($s_url, Flight::get('flight.base_url'));
     if (! preg_match('/^[' . Flight::get('alphabet') . ']+$/', $hash)) {
         Flight::json(['status' => 0, 'msg' => '短址不正确']);
     } else {
@@ -69,7 +69,7 @@ Flight::map('notFound', function($message) {
         ->write(
             '<h1>404 页面未找到</h1>'.
             "<h3>{$message}</h3>".
-            '<p><a href="' . Flight::get('base_url') . '">回到首页</a></p>'.
+            '<p><a href="' . Flight::get('flight.base_url') . '">回到首页</a></p>'.
             str_repeat(' ', 512)
         )
         ->send();
