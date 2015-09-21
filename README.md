@@ -10,10 +10,11 @@ Ourls会根据sha1值来判断原url在数据库中是否已存在，若不存�
 
 ## 安装/Install
 
-下载源码后运行`composer install`安装依赖包，然后将urls.sql导入数据库中，
-将app目录下config.sample.php重命名为config.php并按自己实际情况修改相关配置项。
+下载源码后运行`composer install`安装依赖包，或者运行`composer create-project takashiki/ourls`。
 
-> git clone
+然后将urls.sql导入数据库中，将app目录下config.sample.php重命名为config.php并按自己实际情况修改相关配置项。
+
+> git clone and composer install or composer create-project takashiki/ourls
 
 > import urls.sql to your database
 
