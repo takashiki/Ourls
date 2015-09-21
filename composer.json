@@ -1,5 +1,5 @@
 {
-    "name": "takashiki/Ourls",
+    "name": "takashiki/ourls",
     "description": "A url shorten service system base on hash id",
     "keywords": ["url shorten", "hashids"],
     "homepage": "https://github.com/takashiki/ourls",
