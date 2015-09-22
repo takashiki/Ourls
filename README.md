@@ -2,7 +2,13 @@
 
 Ourls是一个基于发号和hashid的短网址服务，灵感来源于知乎上关于短址算法的一个讨论——
 [http://www.zhihu.com/question/29270034](http://www.zhihu.com/question/29270034)。
+
+## 特征/Feature
+
 Ourls会根据sha1值来判断原url在数据库中是否已存在，若不存在则新增记录后对记录id进行hash，产生短网址。
+
+Ourls会对输入的url进行标准化处理，若为缺少scheme的url，会默认自动加上`http://`，
+并且会对url的query参数进行排序和urlencode等。
 
 ## 演示/Demo
 
