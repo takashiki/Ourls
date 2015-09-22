@@ -5,7 +5,7 @@ return [
     'hash' => [
         'salt' => 'SomeRandomKey',
         'length' => 5,
-        'alphabet' => '',
+        'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
     ],
     'db' => [
         'database_type' => 'mysql',

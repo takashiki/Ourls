@@ -1,6 +1,6 @@
 $('#shorten').click(function() {
     var raw_url = $('#url').val();
-    if (validator.isURL(raw_url, {require_protocol: true})) {
+    if (validator.isURL(raw_url)) {
         var url = encodeURIComponent(raw_url);
         $.getJSON(
             'shorten?url=' + url,
