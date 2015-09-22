@@ -16,7 +16,8 @@
         "hashids/hashids": "1.0.5",
         "mikecao/flight": "^1.2",
         "catfan/medoo": "^0.9.8",
-        "glenscott/url-normalizer": "*"
+        "glenscott/url-normalizer": "*",
+        "etechnika/idna-convert": "^1.1"
     },
     "autoload": {
         "psr-4": {

@@ -1,4 +1,6 @@
 <?php
+use Etechnika\IdnaConvert\IdnaConvert;
+
 if (! function_exists('avg')) {
     function avg(array $data) {
         return array_sum($data) / count($data);
@@ -10,10 +12,11 @@ if (! function_exists('url_modify')) {
         if (parse_url($url, PHP_URL_SCHEME) == null) {
             $url = $defaultScheme . '://' . trim($url, '/');
         }
-        if (filter_var(idn_to_ascii($url), FILTER_VALIDATE_URL) === false) {
+        $url = (new URL\Normalizer($url, true, true))->normalize();
+        if (filter_var(IdnaConvert::encodeString($url), FILTER_VALIDATE_URL) === false) {
             return false;
         } else {
-            return (new URL\Normalizer($url, true, true))->normalize();
+            return $url;
         }
     }
 }
