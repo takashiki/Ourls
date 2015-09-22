@@ -16,7 +16,8 @@ if (! function_exists('url_modify')) {
         if (filter_var(IdnaConvert::encodeString($url), FILTER_VALIDATE_URL) === false) {
             return false;
         } else {
-            return $url;
+            $fragment = parse_url($url, PHP_URL_FRAGMENT);
+            return str_replace('#' . $fragment, '#' . urldecode($fragment), $url);
         }
     }
 }
