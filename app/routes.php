@@ -4,7 +4,7 @@ Flight::route('/', function(){
 });
 
 Flight::route('/shorten', function() {
-    $url = url_modify(urldecode(Flight::request()->query['url']));
+    $url = url_modify(Flight::request()->query['url']);
     if ($url) {
         if (strpos($url, Flight::get('flight.base_url')) !== false) {
             Flight::json(['status' => 0, 'msg' => '该地址无法被缩短']);
