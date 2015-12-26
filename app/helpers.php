@@ -2,13 +2,15 @@
 use Etechnika\IdnaConvert\IdnaConvert;
 
 if (! function_exists('avg')) {
-    function avg(array $data) {
+    function avg(array $data)
+    {
         return array_sum($data) / count($data);
     }
 }
 
 if (! function_exists('url_modify')) {
-    function url_modify($url, $defaultScheme = 'http') {
+    function url_modify($url, $defaultScheme = 'http')
+    {
         if (parse_url($url, PHP_URL_SCHEME) == null) {
             $url = $defaultScheme . '://' . trim($url, '/');
         }
@@ -31,7 +33,7 @@ if (! function_exists('url_modify')) {
  * @param callback $callback Function to call after object instantiation
  * @throws \Exception If trying to map over a framework method
  */
-Flight::map('instance', function($name, $class, array $params = array(), $callback = null) {
+Flight::map('instance', function ($name, $class, array $params = array(), $callback = null) {
     Flight::register($name, $class, $params, $callback);
     Flight::set($name, Flight::{$name}());
 });

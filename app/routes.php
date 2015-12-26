@@ -1,9 +1,9 @@
 <?php
-Flight::route('/', function(){
+Flight::route('/', function () {
     Flight::render('index.php');
 });
 
-Flight::route('/shorten', function() {
+Flight::route('/shorten', function () {
     $url = url_modify(Flight::request()->query['url']);
     if ($url) {
         if (strpos($url, Flight::get('flight.base_url')) !== false) {
@@ -31,7 +31,7 @@ Flight::route('/shorten', function() {
     }
 });
 
-Flight::route('/expand', function() {
+Flight::route('/expand', function () {
     $s_url = Flight::request()->query['s_url'];
     if ($s_url) {
         $hash = str_replace(Flight::get('flight.base_url'), '', $s_url);
@@ -55,7 +55,7 @@ Flight::route('/expand', function() {
     }
 });
 
-Flight::route('/@hash', function($hash) {
+Flight::route('/@hash', function ($hash) {
     $id = Flight::get('hash')->decode($hash);
     if (! $id) {
         Flight::notFound('短址无法解析');
@@ -74,7 +74,7 @@ Flight::route('/@hash', function($hash) {
     }
 });
 
-Flight::map('notFound', function($message) {
+Flight::map('notFound', function ($message) {
     Flight::response()->status(404)
         ->header('content-type', 'text/html; charset=utf-8')
         ->write(
@@ -86,7 +86,7 @@ Flight::map('notFound', function($message) {
         ->send();
 });
 
-Flight::map('error', function(Exception $ex) {
+Flight::map('error', function (Exception $ex) {
     $message = Flight::get('flight.log_errors') ? $ex->getTraceAsString() : '出错了';
     Flight::response()->status(500)
         ->header('content-type', 'text/html; charset=utf-8')
