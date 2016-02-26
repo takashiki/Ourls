@@ -1,4 +1,5 @@
 <?php
+
 Flight::route('/', function () {
     Flight::render('index.php');
 });
@@ -15,15 +16,15 @@ Flight::route('/shorten', function () {
             ]);
             if (!$store) {
                 $id = Flight::get('db')->insert('urls', [
-                    'sha1' => $sha1,
-                    'url' => $url,
+                    'sha1'      => $sha1,
+                    'url'       => $url,
                     'create_at' => time(),
-                    'creator' => ip2long(Flight::request()->ip),
+                    'creator'   => ip2long(Flight::request()->ip),
                 ]);
             } else {
                 $id = $store[0]['id'];
             }
-            $s_url = Flight::get('flight.base_url') . Flight::get('hash')->encode($id);
+            $s_url = Flight::get('flight.base_url').Flight::get('hash')->encode($id);
             Flight::json(['status' => 1, 's_url' => $s_url]);
         }
     } else {
@@ -35,7 +36,7 @@ Flight::route('/expand', function () {
     $s_url = Flight::request()->query['s_url'];
     if ($s_url) {
         $hash = str_replace(Flight::get('flight.base_url'), '', $s_url);
-        if (!preg_match('/^[' . Flight::get('alphabet') . ']+$/', $hash)) {
+        if (!preg_match('/^['.Flight::get('alphabet').']+$/', $hash)) {
             Flight::json(['status' => 0, 'msg' => '短址不正确']);
         } else {
             $id = Flight::get('hash')->decode($hash);
@@ -57,13 +58,13 @@ Flight::route('/expand', function () {
 
 Flight::route('/@hash', function ($hash) {
     $id = Flight::get('hash')->decode($hash);
-    if (! $id) {
+    if (!$id) {
         Flight::notFound('短址无法解析');
     } else {
         $store = Flight::get('db_read')->select('urls', ['url'], [
             'id' => $id,
         ]);
-        if (! $store) {
+        if (!$store) {
             Flight::notFound('地址不存在');
         } else {
             Flight::get('db')->update('urls', ['count[+]' => 1], [
@@ -80,7 +81,7 @@ Flight::map('notFound', function ($message) {
         ->write(
             '<h1>404 页面未找到</h1>'.
             "<h3>{$message}</h3>".
-            '<p><a href="' . Flight::get('flight.base_url') . '">回到首页</a></p>'.
+            '<p><a href="'.Flight::get('flight.base_url').'">回到首页</a></p>'.
             str_repeat(' ', 512)
         )
         ->send();
@@ -93,7 +94,7 @@ Flight::map('error', function (Exception $ex) {
         ->write(
             '<h1>500 服务器内部错误</h1>'.
             "<h3>{$message}</h3>".
-            '<p><a href="' . Flight::get('flight.base_url') . '">回到首页</a></p>'.
+            '<p><a href="'.Flight::get('flight.base_url').'">回到首页</a></p>'.
             str_repeat(' ', 512)
         )
         ->send();
