@@ -1,4 +1,5 @@
 <?php
+
 namespace app\components;
 
 use Hashids\Hashids;
@@ -24,6 +25,7 @@ class Hash
     public function decode($hash)
     {
         $id = $this->hashids->decode($hash);
+
         return $id ? $id[0] : false;
     }
 }
