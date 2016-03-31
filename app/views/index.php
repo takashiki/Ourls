@@ -25,7 +25,7 @@
 
     <meta name="msapplication-TileColor" content="#0e90d2">
 
-    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.4.2/css/amazeui.min.css">
+    <link href="//cdn.bootcss.com/amazeui/2.5.2/css/amazeui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -65,7 +65,7 @@
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
 <script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
-<script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.min.js"></script>
+<script src="//cdn.bootcss.com/amazeui/2.5.2/js/amazeui.min.js"></script>
 <script src="//cdn.bootcss.com/validator/4.0.5/validator.min.js"></script>
 <script src="js/index.js"></script>
 </body>
