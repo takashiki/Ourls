@@ -32,4 +32,7 @@ return [
             PDO::ATTR_CASE => PDO::CASE_NATURAL,
         ],
     ],
+    'settings' => [
+        'external_js' => null,
+    ],
 ];

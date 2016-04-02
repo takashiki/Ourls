@@ -42,8 +42,7 @@
 </div>
 
 <div class="am-g">
-    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-
+    <div id="content" class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
         <form class="am-form">
             <input type="url" name="" id="url" value="" placeholder="请在此填写你要转换的长网址或短址">
             <br>
@@ -68,5 +67,8 @@
 <script src="//cdn.bootcss.com/amazeui/2.5.2/js/amazeui.min.js"></script>
 <script src="//cdn.bootcss.com/validator/4.0.5/validator.min.js"></script>
 <script src="js/index.js"></script>
+<?php if (!empty(Flight::get('flight.settings')['external_js'])): ?>
+    <script src="<?= Flight::get('flight.settings')['external_js'] ?>"></script>
+<?php endif ?>
 </body>
 </html>
