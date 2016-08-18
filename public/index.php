@@ -17,5 +17,6 @@ Flight::set('alphabet', $config['hash']['alphabet']);
 Flight::instance('hash', '\app\components\Hash', [$config['hash']]);
 Flight::instance('db', 'medoo', [$config['db']]);
 Flight::instance('db_read', 'medoo', [$config['db_read']]);
+Flight::instance('proxies', '\IPSet\IPSet', [$config['proxies']]);
 
 Flight::start();

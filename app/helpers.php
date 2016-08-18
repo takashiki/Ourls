@@ -26,6 +26,19 @@ if (!function_exists('url_modify')) {
     }
 }
 
+if (!function_exists('real_remote_addr')) {
+    function real_remote_addr()
+    {
+        $ip = Flight::request()->ip;
+        $proxy = Flight::request()->proxy_ip;
+        if ('' != $proxy && Flight::get('proxies')->match($ip)) {
+            return $proxy;
+        } else {
+            return $ip;
+        }
+    }
+}
+
 /*
  * Registers a class and set a variable to framework method.
  *
