@@ -19,7 +19,7 @@ Flight::route('/shorten', function () {
                     'sha1'      => $sha1,
                     'url'       => $url,
                     'create_at' => time(),
-                    'creator'   => ip2long(Flight::request()->ip),
+                    'creator'   => ip2long(real_remote_addr()),
                 ]);
             } else {
                 $id = $store[0]['id'];

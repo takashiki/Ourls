@@ -17,7 +17,8 @@
         "mikecao/flight": "^1.2",
         "catfan/medoo": "^0.9.8",
         "glenscott/url-normalizer": "*",
-        "etechnika/idna-convert": "^1.1"
+        "etechnika/idna-convert": "^1.1",
+        "wikimedia/ip-set": "1.1.0"
     },
     "autoload": {
         "psr-4": {
