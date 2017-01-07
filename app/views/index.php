@@ -51,6 +51,7 @@
                 <input type="button" id="expand" value="还原短址" class="am-btn am-btn-default am-btn-sm am-fr">
             </div>
         </form>
+        <div id="qrcode" class="am-hide am-center am-img-thumbnail am-img-responsive" style="width: 206px;height: 206px"></div>
         <hr>
         <p>© <?= date('Y') ?> <a href="https://github.com/takashiki/ourls" target="_blank">Ourls</a> . Licensed under MIT license.</p>
     </div>
@@ -66,6 +67,7 @@
 <![endif]-->
 <script src="//cdn.bootcss.com/amazeui/2.5.2/js/amazeui.min.js"></script>
 <script src="//cdn.bootcss.com/validator/4.0.5/validator.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 <script src="js/index.js"></script>
 <?php if (!empty(Flight::get('flight.settings')['external_js'])): ?>
     <script src="<?= Flight::get('flight.settings')['external_js'] ?>"></script>

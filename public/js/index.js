@@ -7,6 +7,13 @@ $('#shorten').click(function() {
             function (data) {
                 if (data.status == 1) {
                     $('#url').val(data.s_url);
+                    var qrcode = $('#qrcode');
+                    qrcode.qrcode({
+                        width: 200,
+                        height: 200,
+                        text: "data.s_url"
+                    });
+                    qrcode.removeClass('am-hide');
                 } else {
                     alert(data.msg);
                 }
@@ -24,6 +31,9 @@ $('#expand').click(function() {
         function(data) {
             if (data.status == 1) {
                 $('#url').val(data.url);
+                var qrcode = $('#qrcode');
+                qrcode.addClass('am-hide');
+                qrcode.html('');
             } else {
                 alert(data.msg);
             }
