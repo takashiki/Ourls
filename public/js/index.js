@@ -11,7 +11,7 @@ $('#shorten').click(function() {
                     qrcode.qrcode({
                         width: 200,
                         height: 200,
-                        text: "data.s_url"
+                        text: data.s_url
                     });
                     qrcode.removeClass('am-hide');
                 } else {
