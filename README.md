@@ -1,5 +1,13 @@
 # Ourls
 
+[![Latest Stable Version](https://poser.pugx.org/takashiki/ourls/v/stable)](https://packagist.org/packages/takashiki/ourls)
+
+[![Total Downloads](https://poser.pugx.org/takashiki/ourls/downloads)](https://packagist.org/packages/takashiki/ourls)
+
+[![Latest Unstable Version](https://poser.pugx.org/takashiki/ourls/v/unstable)](https://packagist.org/packages/takashiki/ourls)
+
+[![License](https://poser.pugx.org/takashiki/ourls/license)](https://packagist.org/packages/takashiki/ourls)
+
 Ourls是一个基于发号和hashid的短网址服务，灵感来源于知乎上关于短址算法的一个讨论——
 [http://www.zhihu.com/question/29270034](http://www.zhihu.com/question/29270034)。
 
@@ -24,11 +32,11 @@ Ourls会对输入的url进行标准化处理，若为缺少scheme的url，会默
 
 > import urls.sql to your database
 
-> rename app/config.sample.php to app/config.php 
+> rename app/config.sample.php to app/config.php
 
 > modify the config file according to your situation
 
 ### License
 
-Ourls is open-sourced software licensed under the 
+Ourls is open-sourced software licensed under the
 [MIT license](http://opensource.org/licenses/MIT)
