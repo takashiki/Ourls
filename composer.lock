@@ -1,42 +1,43 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0cf054e4a3c1b0908683bb963b45130",
+    "content-hash": "06c0ded367d16fd5f75b9cbed42355c0",
     "packages": [
         {
             "name": "catfan/medoo",
-            "version": "v0.9.8",
+            "version": "v1.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "920ae293ee87286f955a5265124509695e172434"
+                "reference": "3b28d9469fd3f6f6e9c1106ec4342111ab2b50c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/catfan/Medoo/920ae293ee87286f955a5265124509695e172434.zip",
-                "reference": "920ae293ee87286f955a5265124509695e172434",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/3b28d9469fd3f6f6e9c1106ec4342111ab2b50c4",
+                "reference": "3b28d9469fd3f6f6e9c1106ec4342111ab2b50c4",
                 "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
-                "php": ">=5.1"
+                "php": ">=5.4"
             },
             "suggest": {
-                "ext-pdo-mysql": "For MySQL or MariaDB databases",
-                "ext-pdo-pqsql": "For PostgreSQL databases",
-                "ext-pdo-sqlite": "For SQLite databases",
-                "ext-pdo_dblib": "For MSSQL or Sybase databases on Liunx/UNIX platform",
-                "ext-pdo_oci": "For Oracle databases",
-                "ext-pdo_sqlsrv": "For MSSQL databases on Windows platform"
+                "ext-pdo_dblib": "For MSSQL or Sybase database on Linux/UNIX platform",
+                "ext-pdo_mysql": "For MySQL or MariaDB database",
+                "ext-pdo_oci": "For Oracle database",
+                "ext-pdo_oci8": "For Oracle version 8 database",
+                "ext-pdo_pqsql": "For PostgreSQL database",
+                "ext-pdo_sqlite": "For SQLite database",
+                "ext-pdo_sqlsrv": "For MSSQL database on both Window/Liunx platform"
             },
             "type": "framework",
             "autoload": {
-                "files": [
-                    "medoo.php"
-                ]
+                "psr-4": {
+                    "Medoo\\": "/src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -45,21 +46,29 @@
             "authors": [
                 {
                     "name": "Angel Lai",
-                    "email": "angel.lai.cat@gmail.com"
+                    "email": "angel@catfan.me"
                 }
             ],
-            "description": "The Lightest PHP database framework to accelerate development",
-            "homepage": "http://medoo.in",
+            "description": "The lightweight PHP database framework to accelerate development",
+            "homepage": "https://medoo.in",
             "keywords": [
                 "database",
+                "database library",
                 "lightweight",
+                "mariadb",
                 "mssql",
                 "mysql",
+                "oracle",
                 "php framework",
+                "postgresql",
                 "sql",
                 "sqlite"
             ],
-            "time": "2015-02-11T03:54:23+00:00"
+            "support": {
+                "issues": "https://github.com/catfan/Medoo/issues",
+                "source": "https://github.com/catfan/Medoo"
+            },
+            "time": "2019-10-12T13:13:11+00:00"
         },
         {
             "name": "etechnika/idna-convert",
@@ -314,7 +323,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.0"
+        "php": ">=5.6.4"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
