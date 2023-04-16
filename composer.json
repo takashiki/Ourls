@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=5.6.4",
-        "catfan/medoo": "^0.9.8",
+        "catfan/medoo": "^1.7.5",
         "etechnika/idna-convert": "^1.1",
         "glenscott/url-normalizer": "*",
         "hashids/hashids": "^2.0",
