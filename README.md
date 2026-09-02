@@ -4,6 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/takashiki/ourls/downloads)](https://packagist.org/packages/takashiki/ourls)
 [![Latest Unstable Version](https://poser.pugx.org/takashiki/ourls/v/unstable)](https://packagist.org/packages/takashiki/ourls)
 [![License](https://poser.pugx.org/takashiki/ourls/license)](https://packagist.org/packages/takashiki/ourls)
+[![Powered by OrcaRouter](https://img.shields.io/badge/Powered_by-OrcaRouter-2563eb)](https://www.orcarouter.ai/ref/ref_5b0544fa1a953b71c31c)
 
 Ourls是一个基于发号和hashid的短网址服务，灵感来源于知乎上关于短址算法的一个讨论——
 [http://www.zhihu.com/question/29270034](http://www.zhihu.com/question/29270034)。
