@@ -7,3 +7,181 @@
     color: #333;
     margin-top: 30px;
 }
+/*
+ * OrcaRouter provider panel.
+ */
+.orca-panel {
+    text-align: left;
+    margin-top: 24px;
+}
+
+.orca-panel-hd {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.orca-logo {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.orca-panel-title {
+    font-weight: 600;
+    flex: 1 1 auto;
+}
+
+.orca-state {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: #f5f5f5;
+    color: #666;
+}
+
+.orca-state-connected {
+    border-color: #3bb4a6;
+    background: #e8f7f5;
+    color: #1d7a6e;
+}
+
+.orca-state-degraded {
+    border-color: #e6a23c;
+    background: #fdf6ec;
+    color: #b88230;
+}
+
+.orca-choice {
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+
+.orca-choice:first-child {
+    border-top: 0;
+}
+
+.orca-choice-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.orca-attach {
+    font-weight: 400;
+    margin-top: 8px;
+}
+
+.orca-hint {
+    color: #777;
+    font-size: 12px;
+    margin: 0 0 6px;
+}
+
+.orca-masked {
+    font-family: monospace;
+}
+
+.orca-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.orca-row .am-form-field {
+    flex: 1 1 200px;
+    margin-bottom: 0;
+}
+
+.orca-url {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.orca-answer {
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: #f7f7f7;
+    border: 1px solid #eee;
+    padding: 8px;
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+/*
+ * The model listbox. Positioned against the trigger so its right edge lines up
+ * with the trigger's right edge, with an opaque background and a visible border
+ * so it reads as a real overlay rather than inline text.
+ */
+.orca-select {
+    position: relative;
+    display: block;
+}
+
+.orca-select-trigger {
+    /*
+     * Full width so the trigger's right edge and the listbox's right edge (the
+     * list is anchored to the same container) line up exactly.
+     */
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-select-list {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    left: auto;
+    min-width: 320px;
+    max-width: 420px;
+    max-height: 280px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 4px 0;
+    list-style: none;
+    background: #ffffff;
+    border: 1px solid #c8c8c8;
+    border-radius: 3px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+    z-index: 1200;
+    text-align: left;
+}
+
+.orca-select-list[hidden] {
+    display: none;
+}
+
+.orca-option {
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.orca-option:hover,
+.orca-option[aria-selected="true"] {
+    background: #eef5fd;
+}
+
+.orca-option-id {
+    font-family: monospace;
+}
+
+.orca-option-meta {
+    display: block;
+    color: #888;
+    font-size: 11px;
+}
+
+.orca-option-empty {
+    padding: 8px 10px;
+    color: #888;
+    font-size: 13px;
+}

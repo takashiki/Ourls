@@ -34,6 +34,69 @@ Ourls会对输入的url进行标准化处理，若为缺少scheme的url，会默
 
 > modify the config file according to your situation
 
+## OrcaRouter
+
+Ourls ships with [OrcaRouter](https://www.orcarouter.ai) as a model provider. The homepage panel
+offers **two** ways to connect, and they can be used independently:
+
+| Entry | What it does | Credential |
+| --- | --- | --- |
+| `OrcaRouter - API` | Paste an `sk-orca-…` key from your [console](https://www.orcarouter.ai/console/authorized-apps). | The key you already have. |
+| `OrcaRouter - Auth` | *Connect with OrcaRouter* — sign in with your own account via OAuth 2.0 + PKCE. | A key issued to your account by the consent screen. |
+
+Both produce the same durable `sk-orca-…` key, billed to your own account and revocable at any time.
+No client secret is involved and there is no redirect address to register: the authorization code is
+shown on the consent screen and pasted back into the panel (the out-of-band flow), which is the only
+option for self-hosted software whose address differs on every deployment.
+
+Requests are sent to `https://api.orcarouter.ai/v1` using the OpenAI wire format. The model list is
+read live from `GET /v1/models` and filtered per capability, so you pick from real models rather than
+typing a name.
+
+### Configuration
+
+Authentication and inference live on **different** origins, so they are configured separately. Add an
+`orcarouter` block to `app/config.php`:
+
+```php
+'orcarouter' => [
+    'base_url'        => null,   // one shared origin for a self-hosted deployment
+    'auth_base_url'   => null,   // defaults to https://www.orcarouter.ai
+    'api_base_url'    => null,   // defaults to https://api.orcarouter.ai/v1
+    'credential_file' => __DIR__.'/../storage/orcarouter.json',
+],
+```
+
+Environment variables override the config file, and a specific value wins over the shared one:
+
+```
+ORCA_BASE_URL       # shared fallback for both origins
+ORCA_AUTH_BASE_URL  # authentication and code exchange
+ORCA_API_BASE_URL   # inference and model discovery
+```
+
+Remote origins must use `https`; plain `http` is accepted for loopback development only. Never point
+one origin at the other — the exchange endpoint is `https://www.orcarouter.ai/api/v1/auth/keys`, and
+`https://api.orcarouter.ai/v1/auth/keys` does not exist.
+
+### Where the key is stored
+
+The key is held server-side in `storage/orcarouter.json`, encrypted with AES-256-GCM using a key in a
+sibling `orcarouter.key` file. Both are git-ignored and created with `0600` permissions. The browser
+never receives the key: it sees the masked form only, and every model list and inference request is
+made by the server. Delete both files, or press *Clear* / *Sign out* in the panel, to remove it.
+
+> An OrcaRouter key is durable, not a refresh token. There is no refresh grant: if the key is revoked,
+> the exact credential is marked as needing reconnection and you sign in again.
+
+### Tests
+
+```
+php tests/OrcaRouterTest.php           # credential seam, PKCE crypto, catalog filters, 401 recovery
+php tests/PkceIntegrationTest.php      # full loopback authorize -> exchange -> persist
+ORCAROUTER_API_KEY=... php tools/test_schema.php   # validates the filters against the live catalog
+```
+
 ### License
 
 Ourls is open-sourced software licensed under the
