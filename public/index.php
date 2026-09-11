@@ -12,6 +12,7 @@ Flight::set('flight.log_errors', $config['debug']);
 Flight::set('flight.base_url', $config['base_url']);
 Flight::set('flight.settings', $config['settings']);
 Flight::set('flight.views.path', __DIR__.'/../app/views');
+Flight::set('flight.orcarouter', isset($config['orcarouter']) ? $config['orcarouter'] : []);
 Flight::set('alphabet', $config['hash']['alphabet']);
 
 Flight::instance('hash', '\app\components\Hash', [$config['hash']]);
